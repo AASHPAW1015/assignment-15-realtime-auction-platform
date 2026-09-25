@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Auction Floor</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Live Auction Floor</h1>
+      <div class="header-meta">
+        <span id="me" class="chip"></span>
+        <span class="chip">Wallet <strong id="wallet-available">-</strong></span>
+        <span id="status" class="status offline">connecting...</span>
+      </div>
+    </header>
+
+    <div id="banner" class="banner hidden"></div>
+
+    <nav id="lots" class="lots"></nav>
+
+    <main class="floor">
+      <section class="panel item">
+        <div class="item-top">
+          <div id="item-image" class="item-image"></div>
+          <div>
+            <h2 id="item-title"></h2>
+            <p id="item-desc" class="muted"></p>
+            <p class="muted small">
+              Start <span id="item-start"></span> · Step <span id="item-step"></span> ·
+              <span id="reserve"></span>
+            </p>
+          </div>
+        </div>
+
+        <div class="ticker-row">
+          <div>
+            <div class="label">Current bid</div>
+            <div id="current-bid" class="ticker">-</div>
+            <div class="muted">Leader: <strong id="leader">no bids yet</strong></div>
+          </div>
+          <div class="clock-box">
+            <div class="label">Time left</div>
+            <div id="clock" class="clock">--</div>
+            <div id="item-status" class="pill"></div>
+          </div>
+        </div>
+
+        <div class="bid-box">
+          <div class="quick">
+            <button data-steps="1" class="quick-btn"></button>
+            <button data-steps="2" class="quick-btn"></button>
+            <button data-steps="5" class="quick-btn"></button>
+          </div>
+          <form id="bid-form" class="custom">
+            <input id="bid-amount" type="number" min="0" step="1" placeholder="Custom amount" />
+            <button type="submit" class="bid-btn">PLACE BID</button>
+          </form>
+          <p id="min-next" class="muted small"></p>
+        </div>
+      </section>
+
+      <section class="panel feed">
+        <div class="feed-head">
+          <h3>Bid activity</h3>
+          <span class="chip">👁 <span id="viewers">0</span> watching</span>
+        </div>
+        <ol id="history" class="history"></ol>
+      </section>
+    </main>
+  </body>
+</html>

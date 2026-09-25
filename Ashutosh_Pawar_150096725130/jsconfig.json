@@ -1,0 +1,1 @@
+{"exclude": ["node_modules"], "compilerOptions": {"module": "commonjs", "baseUrl": "."}}
