@@ -14,6 +14,19 @@ the reserve price was met. Every bid is kept in an auditable history feed and
 the room shows a live viewer count. The dark trading-floor UI in `public/`
 has flash / shake animations and Web Audio beeps.
 
+
+## Live demo
+
+https://assignment-15-realtime-auction-platform-w0xm.onrender.com
+
+Open it in two browser tabs (or on two devices) with different names to bid
+against each other. The app runs as one Render web service on the free tier
+(which supports WebSockets): the first visit after a period of inactivity can
+take up to a minute, and auction state lives in memory, so it resets whenever
+the server restarts. Deployed with root directory
+`Ashutosh_Pawar_150096725130`, build `npm install`, start `npm start`; Render
+provides `PORT`.
+
 ## Tech stack
 
 - Node.js, Express 5
